@@ -10,10 +10,12 @@ if (KEY && KEY !== 'your_token_here') {
   axios.defaults.headers.common['Accept'] = 'application/json';
 }
 
-interface FetchNotesHTTPResponse {
+export interface FetchNotesHTTPResponse {
   notes: Note[];
   totalPages: number;
 }
+
+
 
 interface FetchNotesParams {
   search?: string;
