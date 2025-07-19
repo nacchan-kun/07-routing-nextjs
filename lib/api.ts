@@ -2,9 +2,13 @@ import axios from 'axios';
 import type { Note } from '../types/note';
 
 const KEY = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
-axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
-axios.defaults.headers.common['Authorization'] = `Bearer ${KEY}`;
-axios.defaults.headers.common['Accept'] = 'application/json';
+
+// Only configure axios if we have a valid token
+if (KEY && KEY !== 'your_token_here') {
+  axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
+  axios.defaults.headers.common['Authorization'] = `Bearer ${KEY}`;
+  axios.defaults.headers.common['Accept'] = 'application/json';
+}
 
 interface FetchNotesHTTPResponse {
   notes: Note[];
@@ -28,6 +32,13 @@ export async function fetchNotes({
   page = 1,
   tag,
 }: FetchNotesParams): Promise<FetchNotesHTTPResponse> {
+  // Check if we have a valid API token
+  if (!KEY || KEY === 'your_token_here') {
+    throw new Error(
+      'NEXT_PUBLIC_NOTEHUB_TOKEN is not configured. Please add your API token to .env.local'
+    );
+  }
+
   const params = {
     page,
     perPage: 12,
@@ -60,6 +71,13 @@ export async function deleteNote(id: number): Promise<Note> {
 }
 
 export async function getNoteById(id: number): Promise<Note> {
+  // Check if we have a valid API token
+  if (!KEY || KEY === 'your_token_here') {
+    throw new Error(
+      'NEXT_PUBLIC_NOTEHUB_TOKEN is not configured. Please add your API token to .env.local'
+    );
+  }
+
   const response = await axios.get<Note>(`/notes/${id}`);
   return response.data;
 }
