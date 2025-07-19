@@ -3,7 +3,7 @@ import {
   HydrationBoundary,
   dehydrate,
 } from '@tanstack/react-query';
-import { getNoteById } from '@/lib/api/note';
+import { getNoteById } from '@/lib/api';
 import NotePreviewClient from './NotePreview.client';
 
 type Props = {
