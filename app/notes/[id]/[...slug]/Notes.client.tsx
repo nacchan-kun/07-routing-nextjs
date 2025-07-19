@@ -9,7 +9,7 @@ import Pagination from '@/components/Pagination/Pagination';
 import NoteList from '@/components/NoteList/NoteList';
 import Modal from '@/components/NoteModal/NoteModal';
 import { useDebounce } from 'use-debounce';
-import css from '@/app/notes/filter/[...slug]/Notes.client.module.css';
+import css from './Notes.client.module.css';
 import Loader from '@/components/Loader/Loader';
 
 interface NotesClientProps {
