@@ -33,7 +33,7 @@ export default function TagsMenu() {
       </button>
       {isOpen && (
         <ul className={css.menuList}>
-          {['all', 'Work', 'Personal', 'Meeting', 'Shopping', 'Todo'].map(
+          {['All', 'Work', 'Personal', 'Meeting', 'Shopping', 'Todo'].map(
             tag => (
               <li key={tag} className={css.menuItem}>
                 <Link
@@ -41,7 +41,7 @@ export default function TagsMenu() {
                   href={`/notes/filter/${tag}`}
                   className={css.menuLink}
                 >
-                  {tag === 'all' ? 'All Notes' : tag}
+                  {tag === 'All' ? 'All Notes' : tag}
                 </Link>
               </li>
             )

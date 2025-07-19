@@ -7,6 +7,7 @@ interface NoteModalProps {
   onClose: () => void;
 }
 
+
 export default function NoteModal({ onClose }: NoteModalProps) {
   const handleBackDropClick = useCallback(
     (evt: React.MouseEvent<HTMLDivElement>) => {
@@ -16,6 +17,7 @@ export default function NoteModal({ onClose }: NoteModalProps) {
     },
     [onClose]
   );
+  
 
   useEffect(() => {
     function handleEscKey(evt: KeyboardEvent) {
